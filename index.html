@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guessing Game</title>
+</head>
+
+<body>
+    <div id="game">
+        <h1>Guessing Game</h1>
+        <h2>Guess the correct letter to win the game!</h2>
+        <h3>You have 9 guesses before you lose.</h3>
+    </div>
+
+    <script>
+// Need the user to choose a letter
+// need the comp to choose a letter 
+// compare the choices to see if win or lose
+// give a game over when ran out of choices 
+
+var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+var wins = 0;
+var losses = 0;
+var numGuesss = 9;
+var guessChoices = [];
+
+document.onkeyup = function () {
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+    var computerGuess = letters[Math.floor(Math.random() * letters.length)];{
+        if (userGuess === computerGuess){
+            wins ++;
+            numGuesses = 9;
+            guessChoices = [];
+        }
+        if (userGuess !== computerGuess){
+            losses ++;
+            numGuesses = 9;
+            guessChoices = []
+        }
+
+        if (userGuess !== letters) {
+            guessChoices ++;
+            numGuesses = 9;
+            var guessChoices = [];           
+        }
+    }
+    
+    var html = 
+			"<h1> Guessing Game </h1>" +
+			"<h2>Guess the correct letter to win the game!</h2>" +
+            "<h3>You have 9 guesses before you lose" +
+			"<p>Wins: " + wins + "</p>" +
+			"<p>Losses: " + losses + "</p>" +
+			"<p>Guesses Left: " + numGuesses + "</p>" +
+			"<p>Your Guesses so far: " + guessChoices.join(", ") + "</p>";
+
+			document.querySelector("#game").innerHTML = html;
+}
+
+    </script>
+
+</body>
+
+
+</html>
